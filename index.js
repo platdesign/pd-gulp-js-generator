@@ -11,7 +11,7 @@ var glob = require('glob');
 
 var header = require('gulp-header');
 
-var pdGulpBaseTask = require('../pd-gulp-base-task');
+var pdGulpBaseTask = require('pd-gulp-base-task');
 
 var path = require('path');
 

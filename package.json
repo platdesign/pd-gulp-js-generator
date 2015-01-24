@@ -9,6 +9,7 @@
     "gulp": "^3.8.10",
     "gulp-header": "^1.2.2",
     "gulp-uglify": "^1.1.0",
+    "pd-gulp-base-task": "git://github.com/platdesign/pd-gulp-base-task",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.2.1"
