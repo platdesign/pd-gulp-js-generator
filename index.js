@@ -40,7 +40,7 @@ module.exports = baseTask('Javascript', function() {
 
 	});
 
-	this.worker(function(job, filename, bundler, cb) {
+	this.compile(function(job, filename, bundler, cb) {
 		return bundler
 			.bundle()
 			.on('error', cb)
