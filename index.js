@@ -46,8 +46,8 @@ module.exports = baseTask('Javascript', function() {
 			.on('error', cb)
 			.pipe( source( path.basename(filename)) )
 			.pipe( buffer() )
-			.pipe( this.plugin('banner', job.options) )
 			.pipe( job.config.uglify ? uglify(job.config.uglify) : gutil.noop() )
+			.pipe( this.plugin('banner', job.options) )
 			.pipe( this.gulp.dest( job.config.dest ) )
 
 			.on('end', function(err) {
