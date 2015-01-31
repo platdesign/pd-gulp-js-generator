@@ -9,7 +9,7 @@ var async = require('async');
 var glob = require('glob');
 var path = require('path');
 var gutil = require('gulp-util');
-
+var intreq = require('./lib/gulp-intreq.js');
 
 
 var baseTask = require('pd-gulp-base-task');
@@ -46,6 +46,7 @@ module.exports = baseTask('Javascript', function() {
 			.on('error', cb)
 			.pipe( source( path.basename(filename)) )
 			.pipe( buffer() )
+			.pipe( job.config.intreq ? intreq() : gutil.noop())
 			.pipe( job.config.uglify ? uglify(job.config.uglify) : gutil.noop() )
 			.pipe( this.plugin('banner', job.options) )
 			.pipe( this.gulp.dest( job.config.dest ) )
@@ -62,6 +63,7 @@ module.exports = baseTask('Javascript', function() {
 
 	this.appendTask('build', {
 		uglify: true,
+		intreq: true,
 		browserify: {
 
 		}
