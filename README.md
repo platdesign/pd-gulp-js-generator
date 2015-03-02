@@ -1,13 +1,15 @@
-#pd-gulp-js-task
+#pd-gulp-js
+
+[pd-gulp](https://github.com/platdesign/pd-gulp) task generator for javascript tasks.
 
 ##Install
 
-	npm install --save platdesign/pd-gulp-js-task
+	npm install --save pd-gulp-js
 	
 ##Example
 
 	var gulp = require('gulp');
-	var js = require('pd-gulp-js-task')(gulp);
+	var js = require('pd-gulp-js')(gulp);
 
 	// Register default tasks (default, watch, build, etc.)
 	js.register({
