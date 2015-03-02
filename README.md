@@ -8,25 +8,26 @@
 	
 ##Example
 
-	var gulp = require('gulp');
-	var js = require('pd-gulp-js')(gulp);
+```javascript
+var gulp = require('gulp');
+var js = require('pd-gulp-js')(gulp);
 
-	// Register default tasks (default, watch, build, etc.)
-	js.register({
-		myLib:{
-			src: './src/js/*.js',
-			dest: './dist/js'
-		}
-	});
+// Register default tasks (default, watch, build, etc.)
+js.register({
+	myLib:{
+		src: './src/js/*.js',
+		dest: './dist/js'
+	}
+});
 
-	// Create custom gulp-task
-	gulp.task('customJs', js({
-		custom: {
-			src: './src/js/*.js',
-			dest: './dist/js'
-		}
-	}));
-
+// Create custom gulp-task
+gulp.task('customJs', js({
+	custom: {
+		src: './src/js/*.js',
+		dest: './dist/js'
+	}
+}));
+```
 
 ##Options
 
