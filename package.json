@@ -23,5 +23,8 @@
     "jade": "^1.9.2",
     "browserify-plain-jade": "^0.2.2"
   },
-  "repository": ""
+  "repository": {
+    "type" : "git",
+    "url" : "http://github.com/platdesign/pd-gulp-js-generator.git"
+  }
 }
