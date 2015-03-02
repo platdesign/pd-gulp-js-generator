@@ -13,9 +13,9 @@ var intreq = require('./lib/gulp-intreq.js');
 
 var plainJade = require('browserify-plain-jade');
 
-var baseTask = require('pd-gulp-base-task');
+var createGenerator = require('pd-gulp-task-generator-generator');
 
-module.exports = baseTask('Javascript', function() {
+module.exports = createGenerator('Javascript', function() {
 
 	this.init(function(job, compile) {
 
