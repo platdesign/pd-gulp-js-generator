@@ -11,6 +11,7 @@ var path = require('path');
 var gutil = require('gulp-util');
 var intreq = require('./lib/gulp-intreq.js');
 
+var plainJade = require('browserify-plain-jade');
 
 var baseTask = require('pd-gulp-base-task');
 
@@ -23,6 +24,9 @@ module.exports = baseTask('Javascript', function() {
 			filename = path.resolve(process.cwd(), filename);
 
 			var bundler = browserify(job.config.browserify);
+
+			bundler.transform(plainJade);
+
 
 			bundler.add(filename, { entry: filename });
 
