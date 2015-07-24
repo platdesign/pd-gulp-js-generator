@@ -11,7 +11,7 @@ var path = require('path');
 var gutil = require('gulp-util');
 var intreq = require('./lib/gulp-intreq.js');
 
-var plainJade = require('browserify-plain-jade');
+var plainJade = require('./lib/transform-plain-jade.js');
 
 var createGenerator = require('pd-gulp-task-generator-generator');
 
