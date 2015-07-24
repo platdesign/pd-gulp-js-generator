@@ -2,7 +2,7 @@
   "name": "pd-gulp-js",
   "description": "pd-gulp generator for js tasks",
   "author": "Christian Blaschke <mail@platdesign.de>",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "dependencies": {
     "async": "^0.9.0",
     "browser-pack": "^3.2.0",
