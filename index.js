@@ -10,6 +10,8 @@ var glob = require('glob');
 var path = require('path');
 var gutil = require('gulp-util');
 var intreq = require('./lib/gulp-intreq.js');
+var resolutions = require('browserify-resolutions');
+
 
 var plainJade = require('./lib/transform-plain-jade.js');
 
@@ -25,8 +27,15 @@ module.exports = createGenerator('Javascript', function() {
 
 			var bundler = browserify(job.config.browserify);
 
-			bundler.transform(plainJade);
+			if(job.config.external) {
+				job.config.external.forEach(function(item) {
+					bundler.external(item);
+				});
+			}
 
+			bundler.plugin(resolutions, job.config.resolutions || ['*']);
+
+			bundler.transform(plainJade);
 
 			bundler.add(filename, { entry: filename });
 
