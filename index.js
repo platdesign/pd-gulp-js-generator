@@ -9,8 +9,9 @@ var async = require('async');
 var glob = require('glob');
 var path = require('path');
 var gutil = require('gulp-util');
-var intreq = require('./lib/gulp-intreq.js');
 var resolutions = require('browserify-resolutions');
+var collapse = require('bundle-collapser/plugin');
+
 
 
 var plainJade = require('./lib/transform-plain-jade.js');
@@ -28,14 +29,22 @@ module.exports = createGenerator('Javascript', function() {
 			var bundler = browserify(job.config.browserify);
 
 			if(job.config.external) {
-				job.config.external.forEach(function(item) {
-					bundler.external(item);
-				});
+				bundler.external(job.config.external);
 			}
 
+			if(job.config.require) {
+				bundler.require(job.config.require);
+			}
+
+			// replace douplex modules
 			bundler.plugin(resolutions, job.config.resolutions || ['*']);
 
+			// replace relative paths to numbers
+			bundler.plugin(collapse);
+
+			// transform jade files to plain jade
 			bundler.transform(plainJade);
+
 
 			bundler.add(filename, { entry: filename });
 
@@ -59,7 +68,6 @@ module.exports = createGenerator('Javascript', function() {
 			.on('error', cb)
 			.pipe( source( path.basename(filename)) )
 			.pipe( buffer() )
-			.pipe( job.config.intreq ? intreq() : gutil.noop())
 			.pipe( job.config.uglify ? uglify(job.config.uglify) : gutil.noop() )
 			.pipe( this.plugin('banner', job.options) )
 			.pipe( this.gulp.dest( job.config.dest ) )
