@@ -56,7 +56,7 @@ module.exports = createGenerator('Javascript', function() {
 				});
 			}
 
-			compile(job, filename, bundler);
+			compile(job, job.config.rename || filename, bundler);
 
 		});
 
