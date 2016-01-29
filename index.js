@@ -56,7 +56,7 @@ module.exports = createGenerator('Javascript', function() {
 				});
 			}
 
-			compile(job, job.config.rename || filename, bundler);
+			compile(job, filename, bundler);
 
 		});
 
@@ -66,7 +66,7 @@ module.exports = createGenerator('Javascript', function() {
 		return bundler
 			.bundle()
 			.on('error', cb)
-			.pipe( source( path.basename(filename)) )
+			.pipe( source( path.basename(job.config.rename || filename)) )
 			.pipe( buffer() )
 			.pipe( job.config.uglify ? uglify(job.config.uglify) : gutil.noop() )
 			.pipe( this.plugin('banner', job.options) )
